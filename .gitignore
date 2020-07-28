@@ -1,0 +1,12 @@
+/target
+/main/web/unzip/*
+/main/web/upload/*
+# local env files
+.env.local
+.env.*.local
+
+# Editor directories and files
+.idea
+package-lock.json
+**.iml
+**.log
