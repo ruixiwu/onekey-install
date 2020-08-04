@@ -339,6 +339,13 @@ fun_input_token(){
     read -e -p "(Default : ${def_token}):" input_token
     [ -z "${input_token}" ] && input_token="${def_token}"
 }
+fun_input_bind_udp_port(){
+    def_bind_udp_port="7001"
+    echo ""
+    echo -n -e "Please input ${program_name} ${COLOR_GREEN}bind_udp_port${COLOR_END}"
+    read -e -p "(Default : ${def_bind_udp_port}):" input_bind_udp_port
+    [ -z "${input_bind_udp_port}" ] && input_bind_udp_port="${def_bind_udp_port}"
+}
 fun_input_subdomain_host(){
     def_subdomain_host=${defIP}
     echo ""
