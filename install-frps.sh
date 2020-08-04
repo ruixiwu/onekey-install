@@ -346,6 +346,28 @@ fun_input_bind_udp_port(){
     read -e -p "(Default : ${def_bind_udp_port}):" input_bind_udp_port
     [ -z "${input_bind_udp_port}" ] && input_bind_udp_port="${def_bind_udp_port}"
 }
+fun_input_api_enable(){
+    def_api_enable=`true`
+    echo ""
+    echo -n -e "Please input ${program_name} ${COLOR_GREEN}api_enable${COLOR_END}"
+    read -e -p "(Default : ${def_api_enable}):" input_api_enable
+    [ -z "${input_api_enable}" ] && input_api_enable="${def_api_enable}"
+}
+fun_input_api_baseurl(){
+    def_api_baseurl=`http://www.80daodao.com/api/`
+    echo ""
+    echo -n -e "Please input ${program_name} ${COLOR_GREEN}api_baseurl${COLOR_END}"
+    read -e -p "(Default : ${def_api_baseurl}):" input_api_baseurl
+    [ -z "${input_api_baseurl}" ] && input_api_baseurl="${def_api_baseurl}"
+}
+fun_input_api_token(){
+    def_api_token=`true`
+    echo ""
+    echo -n -e "Please input ${program_name} ${COLOR_GREEN}api_token${COLOR_END}"
+    read -e -p "(Default : ${def_api_token}):" input_api_token
+    [ -z "${input_api_token}" ] && input_api_token="${def_api_token}"
+}
+
 fun_input_subdomain_host(){
     def_subdomain_host=${defIP}
     echo ""
@@ -398,6 +420,23 @@ pre_install_clang(){
         fun_input_token
         [ -n "${input_token}" ] && set_token="${input_token}"
         echo -e "${program_name} token: ${COLOR_YELOW}${set_token}${COLOR_END}"
+        echo -e ""
+
+        fun_input_bind_udp_port
+        [ -n "${input_bind_udp_port}" ] && set_bind_udp_port="${input_bind_udp_port}"
+        echo -e "${program_name} bind_udp_port: ${COLOR_YELOW}${set_bind_udp_port}${COLOR_END}"
+        echo -e ""
+        fun_input_api_enable
+        [ -n "${input_api_enable}" ] && set_api_enable="${input_api_enable}"
+        echo -e "${program_name} api_enable: ${COLOR_YELOW}${set_api_enable}${COLOR_END}"
+        echo -e ""
+        fun_input_api_baseurl
+        [ -n "${input_api_baseurl}" ] && set_api_baseurl="${input_api_baseurl}"
+        echo -e "${program_name} api_baseurl: ${COLOR_YELOW}${set_api_baseurl}${COLOR_END}"
+        echo -e ""
+        fun_input_api_token
+        [ -n "${input_api_token}" ] && set_api_token="${input_api_token}"
+        echo -e "${program_name} api_token: ${COLOR_YELOW}${set_api_token}${COLOR_END}"
         echo -e ""
         fun_input_subdomain_host
         [ -n "${input_subdomain_host}" ] && set_subdomain_host="${input_subdomain_host}"
@@ -517,6 +556,10 @@ pre_install_clang(){
         echo -e "Dashboard user     : ${COLOR_GREEN}${set_dashboard_user}${COLOR_END}"
         echo -e "Dashboard password : ${COLOR_GREEN}${set_dashboard_pwd}${COLOR_END}"
         echo -e "token              : ${COLOR_GREEN}${set_token}${COLOR_END}"
+        echo -e "bind_udp_port      : ${COLOR_GREEN}${set_bind_udp_port}${COLOR_END}"
+        echo -e "api_enable         : ${COLOR_GREEN}${set_api_enable}${COLOR_END}"
+        echo -e "api_baseurl        : ${COLOR_GREEN}${set_api_baseurl}${COLOR_END}"
+        echo -e "api_token          : ${COLOR_GREEN}${set_api_token}${COLOR_END}"
         echo -e "subdomain_host     : ${COLOR_GREEN}${set_subdomain_host}${COLOR_END}"
         echo -e "tcp_mux            : ${COLOR_GREEN}${set_tcp_mux}${COLOR_END}"
         echo -e "Max Pool count     : ${COLOR_GREEN}${set_max_pool_count}${COLOR_END}"
@@ -565,6 +608,14 @@ log_level = ${str_log_level}
 log_max_days = ${set_log_max_days}
 # auth token
 token = ${set_token}
+# auth bind_udp_port
+bind_udp_port = ${set_bind_udp_port}
+# auth api_enable
+api_enable = ${set_api_enable}
+# auth api_baseurl
+api_baseurl = ${set_api_baseurl}
+# auth api_token
+api_token = ${set_api_token}
 # It is convenient to use subdomain configure for http、https type when many people use one frps server together.
 subdomain_host = ${set_subdomain_host}
 # only allow frpc to bind ports you list, if you set nothing, there won't be any limit
@@ -600,6 +651,14 @@ log_level = ${str_log_level}
 log_max_days = ${set_log_max_days}
 # auth token
 token = ${set_token}
+# auth bind_udp_port
+bind_udp_port = ${set_bind_udp_port}
+# auth api_enable
+api_enable = ${set_api_enable}
+# auth api_baseurl
+api_baseurl = ${set_api_baseurl}
+# auth api_token
+api_token = ${set_api_token}
 # It is convenient to use subdomain configure for http、https type when many people use one frps server together.
 subdomain_host = ${set_subdomain_host}
 # only allow frpc to bind ports you list, if you set nothing, there won't be any limit
@@ -650,6 +709,10 @@ fi
     echo -e "vhost https port   : ${COLOR_GREEN}${set_vhost_https_port}${COLOR_END}"
     echo -e "Dashboard port     : ${COLOR_GREEN}${set_dashboard_port}${COLOR_END}"
     echo -e "token              : ${COLOR_GREEN}${set_token}${COLOR_END}"
+    echo -e "bind_udp_port      : ${COLOR_GREEN}${set_bind_udp_port}${COLOR_END}"
+    echo -e "api_enable         : ${COLOR_GREEN}${set_api_enable}${COLOR_END}"
+    echo -e "api_baseurl        : ${COLOR_GREEN}${set_api_baseurl}${COLOR_END}"
+    echo -e "api_token          : ${COLOR_GREEN}${set_api_token}${COLOR_END}"
     echo -e "subdomain_host     : ${COLOR_GREEN}${set_subdomain_host}${COLOR_END}"
     echo -e "tcp_mux            : ${COLOR_GREEN}${set_tcp_mux}${COLOR_END}"
     echo -e "Max Pool count     : ${COLOR_GREEN}${set_max_pool_count}${COLOR_END}"
@@ -739,7 +802,7 @@ update_config_clang(){
                 [ -z "${set_dashboard_user_update}" ] && set_dashboard_user_update="${def_dashboard_user_update}"
                 echo "${program_name} dashboard_user: ${set_dashboard_user_update}"
                 echo ""
-                def_dashboard_pwd_update=`fun_randstr 8`
+                def_dashboard_pwd_update=`admin123456`
                 read -e -p "Please input dashboard_pwd (Default: ${def_dashboard_pwd_update}):" set_dashboard_pwd_update
                 [ -z "${set_dashboard_pwd_update}" ] && set_dashboard_pwd_update="${def_dashboard_pwd_update}"
                 echo "${program_name} dashboard_pwd: ${set_dashboard_pwd_update}"
@@ -804,7 +867,7 @@ update_config_clang(){
         fi
         verify_dashboard_user=`grep "^dashboard_user" ${str_program_dir}/${program_config_file}`
         verify_dashboard_pwd=`grep "^dashboard_pwd" ${str_program_dir}/${program_config_file}`
-        verify_kcp_bind_port=`grep "kcp_bind_port" ${str_program_dir}/${program_config_file}`
+        verify_kcp_bind_port=`grep "^kcp_bind_port" ${str_program_dir}/${program_config_file}`
         verify_tcp_mux=`grep "^tcp_mux" ${str_program_dir}/${program_config_file}`
         verify_token=`grep "privilege_token" ${str_program_dir}/${program_config_file}`
         verify_allow_ports=`grep "privilege_allow_ports" ${str_program_dir}/${program_config_file}`
