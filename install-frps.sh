@@ -326,14 +326,14 @@ fun_input_dashboard_user(){
     [ -z "${input_dashboard_user}" ] && input_dashboard_user="${def_dashboard_user}"
 }
 fun_input_dashboard_pwd(){
-    def_dashboard_pwd=`fun_randstr 8`
+    def_dashboard_pwd=`admin123456`
     echo ""
     echo -n -e "Please input ${program_name} ${COLOR_GREEN}dashboard_pwd${COLOR_END}"
     read -e -p "(Default : ${def_dashboard_pwd}):" input_dashboard_pwd
     [ -z "${input_dashboard_pwd}" ] && input_dashboard_pwd="${def_dashboard_pwd}"
 }
 fun_input_token(){
-    def_token=`fun_randstr 16`
+    def_token=`SakuraFrpToken`
     echo ""
     echo -n -e "Please input ${program_name} ${COLOR_GREEN}token${COLOR_END}"
     read -e -p "(Default : ${def_token}):" input_token
