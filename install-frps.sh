@@ -326,14 +326,14 @@ fun_input_dashboard_user(){
     [ -z "${input_dashboard_user}" ] && input_dashboard_user="${def_dashboard_user}"
 }
 fun_input_dashboard_pwd(){
-    def_dashboard_pwd=`admin123456`
+    def_dashboard_pwd="admin123456"
     echo ""
     echo -n -e "Please input ${program_name} ${COLOR_GREEN}dashboard_pwd${COLOR_END}"
     read -e -p "(Default : ${def_dashboard_pwd}):" input_dashboard_pwd
     [ -z "${input_dashboard_pwd}" ] && input_dashboard_pwd="${def_dashboard_pwd}"
 }
 fun_input_token(){
-    def_token=`SakuraFrpToken`
+    def_token="SakuraFrpToken"
     echo ""
     echo -n -e "Please input ${program_name} ${COLOR_GREEN}token${COLOR_END}"
     read -e -p "(Default : ${def_token}):" input_token
@@ -347,21 +347,21 @@ fun_input_bind_udp_port(){
     [ -z "${input_bind_udp_port}" ] && input_bind_udp_port="${def_bind_udp_port}"
 }
 fun_input_api_enable(){
-    def_api_enable=`true`
+    def_api_enable="true"
     echo ""
     echo -n -e "Please input ${program_name} ${COLOR_GREEN}api_enable${COLOR_END}"
     read -e -p "(Default : ${def_api_enable}):" input_api_enable
     [ -z "${input_api_enable}" ] && input_api_enable="${def_api_enable}"
 }
 fun_input_api_baseurl(){
-    def_api_baseurl=`http://www.80daodao.com/api/`
+    def_api_baseurl="http://www.80daodao.com/api/"
     echo ""
     echo -n -e "Please input ${program_name} ${COLOR_GREEN}api_baseurl${COLOR_END}"
     read -e -p "(Default : ${def_api_baseurl}):" input_api_baseurl
     [ -z "${input_api_baseurl}" ] && input_api_baseurl="${def_api_baseurl}"
 }
 fun_input_api_token(){
-    def_api_token=`true`
+    def_api_token="true"
     echo ""
     echo -n -e "Please input ${program_name} ${COLOR_GREEN}api_token${COLOR_END}"
     read -e -p "(Default : ${def_api_token}):" input_api_token
@@ -802,7 +802,7 @@ update_config_clang(){
                 [ -z "${set_dashboard_user_update}" ] && set_dashboard_user_update="${def_dashboard_user_update}"
                 echo "${program_name} dashboard_user: ${set_dashboard_user_update}"
                 echo ""
-                def_dashboard_pwd_update=`admin123456`
+                def_dashboard_pwd_update="admin123456"
                 read -e -p "Please input dashboard_pwd (Default: ${def_dashboard_pwd_update}):" set_dashboard_pwd_update
                 [ -z "${set_dashboard_pwd_update}" ] && set_dashboard_pwd_update="${def_dashboard_pwd_update}"
                 echo "${program_name} dashboard_pwd: ${set_dashboard_pwd_update}"
