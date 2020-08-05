@@ -18,7 +18,7 @@ chmod 700 ./install-frps.sh
 ```
 #### Aliyun
 ```Bash
-wget https://code.aliyun.com/MvsCode/frps-onekey/raw/master/install-frps.sh -O ./install-frps.sh
+wget https://code.aliyun.com/ruixiwu/onekey-install/raw/master/install-frps.sh -O ./install-frps.sh
 chmod 700 ./install-frps.sh
 ./install-frps.sh install
 ```
