@@ -4,7 +4,7 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 export FRPS_VER=0.28.2
 export FRPS_INIT="https://code.aliyun.com/ruixiwu/onekey-install/raw/master/frps.init"
-export aliyun_download_url="https://code.aliyun.com/ruixiwu/onekey-install/tree/master"
+export aliyun_download_url="https://code.aliyun.com/ruixiwu/onekey-install/raw/master"
 export github_download_url="https://github.com/ruixiwu/onekey-install/releases/download"
 #======================================================================
 #   System Required:  CentOS Debian Ubuntu or Fedora(32bit/64bit)
