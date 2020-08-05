@@ -361,7 +361,7 @@ fun_input_api_baseurl(){
     [ -z "${input_api_baseurl}" ] && input_api_baseurl="${def_api_baseurl}"
 }
 fun_input_api_token(){
-    def_api_token="true"
+    def_api_token="SakuraFrpToken"
     echo ""
     echo -n -e "Please input ${program_name} ${COLOR_GREEN}api_token${COLOR_END}"
     read -e -p "(Default : ${def_api_token}):" input_api_token
