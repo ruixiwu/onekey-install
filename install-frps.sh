@@ -3,8 +3,8 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 ###export###
 export PATH
 export FRPS_VER=0.28.2
-export FRPS_INIT="https://raw.githubusercontent.com/ruixiwu/onekey-install/master/frps.init"
-export aliyun_download_url="https://code.aliyun.com/ruixiwu/master"
+export FRPS_INIT="https://code.aliyun.com/ruixiwu/onekey-install/raw/master/frps.init"
+export aliyun_download_url="https://code.aliyun.com/ruixiwu/onekey-install/tree/master"
 export github_download_url="https://github.com/ruixiwu/onekey-install/releases/download"
 #======================================================================
 #   System Required:  CentOS Debian Ubuntu or Fedora(32bit/64bit)
@@ -18,7 +18,7 @@ str_program_dir="/usr/local/${program_name}"
 program_init="/etc/init.d/${program_name}"
 program_config_file="frps.ini"
 ver_file="/tmp/.frp_ver.sh"
-str_install_shell="https://raw.githubusercontent.com/ruixiwu/onekey-install/master/install-frps.sh"
+str_install_shell="https://code.aliyun.com/ruixiwu/onekey-install/raw/master/install-frps.sh"
 shell_update(){
     fun_clangcn "clear"
     echo "Check updates for shell..."
